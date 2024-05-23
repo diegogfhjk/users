@@ -36,4 +36,10 @@ public class UserController {
         return ResponseEntity.ok(list);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Integer id){
+        userService.delete(id);
+        return ResponseEntity.ok("El usuario se ha eliminado correctamente");
+    }
+
 }
