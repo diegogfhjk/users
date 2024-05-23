@@ -49,4 +49,14 @@ public class UserServiceImpl implements UserService {
         }
         userRepository.deleteById(id);
     }
+
+    @Override
+    public UserDto findById(Integer id){
+        Optional<User> byId = userRepository.findById(id);
+        if (!byId.isPresent()){
+            throw new RuntimeException("Usuario no encontrado");
+        }
+        UserDto userDto = UserMapper.INSTANCE.toDto(byId.get());
+        return userDto;
+    }
 }

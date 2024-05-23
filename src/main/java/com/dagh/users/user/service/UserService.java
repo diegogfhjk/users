@@ -12,4 +12,6 @@ public interface UserService {
     void update(UserDto userDto);
 
     void delete(Integer id);
+
+    UserDto findById(Integer id);
 }

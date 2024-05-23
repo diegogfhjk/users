@@ -42,4 +42,9 @@ public class UserController {
         return ResponseEntity.ok("El usuario se ha eliminado correctamente");
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity getById(@PathVariable Integer id){
+        UserDto byId = userService.findById(id);
+        return ResponseEntity.ok(byId);
+    }
 }
