@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: users
+  profiles:
+    active: ${PROFILE:dev}
+
+server:
+  port: 8082
+
+env:
+  JAVA_OPTS: "-Duser.timezone=America/Bogota"
+
+springdoc:
+  swagger-ui:
+    defaultModelsExpandDepth: -1
+  packagesToScan: com.dagh.users.user.controller
