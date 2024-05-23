@@ -31,4 +31,13 @@ public class UserServiceImpl implements UserService {
         return UserMapper.INSTANCE.toDtoList(all);
     }
 
+    @Override
+    public void update(UserDto userDto){
+        if (Objects.isNull(userDto)){
+            throw new RuntimeException("Error al modificar el usuario");
+        }
+        User user = UserMapper.INSTANCE.toEntity(userDto);
+        userRepository.save(user);
+    }
+
 }

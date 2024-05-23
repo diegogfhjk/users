@@ -8,4 +8,6 @@ public interface UserService {
     void save(UserDto userDto);
 
     List<UserDto> list();
+
+    void update(UserDto userDto);
 }

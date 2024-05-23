@@ -21,6 +21,12 @@ public class UserController {
         return ResponseEntity.ok("El usuario se ha creado correctamente");
     }
 
+    @PutMapping
+    public ResponseEntity update(@RequestBody UserDto userDto){
+        userService.update(userDto);
+        return ResponseEntity.ok("El usuario se ha modificado correctamente");
+    }
+
     @GetMapping
     public ResponseEntity list(){
         List<UserDto> list = userService.list();
@@ -29,4 +35,5 @@ public class UserController {
         }
         return ResponseEntity.ok(list);
     }
+
 }
