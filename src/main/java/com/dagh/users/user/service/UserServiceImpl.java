@@ -7,6 +7,7 @@ import com.dagh.users.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -22,6 +23,12 @@ public class UserServiceImpl implements UserService {
         }
         User user = UserMapper.INSTANCE.toEntity(userDto);
         userRepository.save(user);
+    }
+
+    @Override
+    public List<UserDto> list(){
+        List<User> all = userRepository.findAll();
+        return UserMapper.INSTANCE.toDtoList(all);
     }
 
 }

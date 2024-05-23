@@ -4,10 +4,9 @@ import com.dagh.users.user.model.UserDto;
 import com.dagh.users.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1.0/users")
@@ -20,5 +19,14 @@ public class UserController {
     public ResponseEntity save(@RequestBody UserDto userDto){
         userService.save(userDto);
         return ResponseEntity.ok("El usuario se ha creado correctamente");
+    }
+
+    @GetMapping
+    public ResponseEntity list(){
+        List<UserDto> list = userService.list();
+        if (list.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(list);
     }
 }
